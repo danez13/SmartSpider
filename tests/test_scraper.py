@@ -1,4 +1,4 @@
-from crawler.core import CrawlerScraper, Page, Url
+from SmartSpider.core import CrawlerScraper, Page, Url
 
 def test_extract_links_from_page():
     html = """

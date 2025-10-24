@@ -1,5 +1,5 @@
 import pytest
-from crawler.core import Page, Url, ChangeDetector
+from SmartSpider.core import Page, Url, ChangeDetector
 
 @pytest.fixture
 def sample_url():

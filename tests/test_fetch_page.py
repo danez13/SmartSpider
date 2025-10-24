@@ -1,6 +1,6 @@
 import pytest
 import requests
-from crawler.core import fetch_page, Url, Page
+from SmartSpider.core import fetch_page, Url, Page
 
 def test_fetch_page_success(monkeypatch):
     class MockResponse:

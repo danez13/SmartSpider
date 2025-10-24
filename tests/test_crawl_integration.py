@@ -1,6 +1,6 @@
 import pytest
-from crawler.core import Page, Scope, Scheduler
-from crawler.crawler import Crawler
+from SmartSpider.core import Page, Scope, Scheduler
+from SmartSpider.crawler import Crawler
 
 @pytest.fixture
 def mock_fetch(monkeypatch):

@@ -1,5 +1,5 @@
 import pytest
-from crawler.core import Url, Page
+from SmartSpider.core import Url, Page
 
 @pytest.mark.parametrize("invalid_url", ["ftp://example.com", "example.com", ""])
 def test_url_invalid_raises(invalid_url):
