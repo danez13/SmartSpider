@@ -3,18 +3,19 @@ requires = ["hatchling >= 1.26"]
 build-backend = "hatchling.build"
 
 [project]
-name = "SmartSpider"
+name = "crawler"
 version = "0.0.1"
 description = "A modular adaptive web crawler framework with incremental, continuous, and scope-limited crawling support."
 authors = [
-  { name="Clover", email="cloverscriptdev@gmail.com" },
+  { name="Daniel", email="hernandezdaniel1702@gmail.com" },
 ]
 license = "MIT"
 readme = "README.md"
 requires-python = ">=3.7"
 dependencies = [
     "requests",
-    "beautifulsoup4"
+    "beautifulsoup4",
+    "pytest"
 ]
 
 classifiers = [

@@ -1,6 +1,3 @@
-from urllib.parse import urlparse
-from dataclasses import dataclass
-
 from .models import *
 
 class Scope:
@@ -13,7 +10,7 @@ class SiteWide(Scope):
         self.root_domain = Url(root_url).domain
 
     def __call__(self, url: Url) -> bool:
-        domain = urlparse(url).netloc
+        domain = url.domain
         return domain == self.root_domain or domain.endswith("." + self.root_domain)
 
 

@@ -31,7 +31,6 @@ __all__ = [
     "CrawlTask",
     "CrawlQueue",
     "Scheduler",
-    "CrawlMode",
     "Scope",
     "CrawlerScraper",
     "fetch_page",

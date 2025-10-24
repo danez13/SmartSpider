@@ -1,18 +1,11 @@
-from typing import Callable
 import time
 
-from core.models import *
-from core.queue import CrawlQueue
-from core.fetcher import fetch_page
-from core.scheduler import Scheduler
-from core.change_detector import ChangeDetector
-from core.scraper import CrawlerScraper
-import core.scope as Scope
+from .core import Url, fetch_page, Scope, CrawlerScraper, CrawlQueue,Scheduler
 
 class Crawler:
-    def __init__(self, url:str,
-                 queue:CrawlQueue = CrawlQueue(), scope:Scope.Scope = Scope.Unrestricted(), 
-                 scraper:CrawlerScraper = CrawlerScraper(),scheduler:Scheduler=Scheduler()):
+    def __init__(self, url: str,
+                 queue: CrawlQueue = CrawlQueue(), scope: Scope = Scope.Unrestricted(),
+                 scraper: CrawlerScraper = CrawlerScraper(), scheduler: Scheduler = Scheduler()):
         
         self.init_url = Url(url)
         self.queue = queue
@@ -39,6 +32,16 @@ class Crawler:
             if self.scheduler.should_crawl(url):
                 self.queue.add_url(url,depth)
                 continue
+            # if item is None:
+            #     if self.scheduler.mode == "continuous":
+            #         time.sleep(1)
+            #         continue
+            #     else:
+            #         break
+
+            # if not self.scheduler.should_crawl(url):
+            #     self.queue.add_url(url,depth)
+            #     continue
             
             page = fetch_page(url)
             if page is None: continue
@@ -55,11 +58,6 @@ class Crawler:
                 self.queue.add_url(url, depth)
 
             return page.url, page.html
-        raise StopIteration
-    
-url = "https://books.toscrape.com/"
-crawler = Crawler(url,)
-
-for url, html in crawler:
-    print(url)
+        if self.queue.next_link() is None:
+            raise StopIteration
 

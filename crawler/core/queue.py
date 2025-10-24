@@ -44,3 +44,4 @@ class CrawlQueue:
     def add_new_links(self, links:list[Url], depth:int):
         for link in links:
             self.add_url(link, depth+1)
+

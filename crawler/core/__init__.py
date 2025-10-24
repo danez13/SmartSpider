@@ -17,7 +17,7 @@ Modules:
 from .models import Url, Page, CrawlTask
 from .queue import CrawlQueue
 from .scheduler import Scheduler
-from .scope import Scope
+from . import scope as Scope
 from .scraper import CrawlerScraper
 from .fetcher import fetch_page
 from .change_detector import ChangeDetector
