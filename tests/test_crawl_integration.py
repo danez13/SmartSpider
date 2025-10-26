@@ -1,15 +1,14 @@
 import pytest
 from SmartSpider.core import Page, Scope, Scheduler
-from SmartSpider import crawler  # import the module, not the class
+from SmartSpider import crawler
 from SmartSpider.crawler import Crawler
 
 @pytest.fixture
 def mock_fetch(monkeypatch):
     def _mock_page(url):
-        html = f"<a href='{url}/next'>Next</a>"  # url is string, no .href
+        html = f"<a href='{url}/next'>Next</a>" 
         return Page(url, html)
 
-    # Patch the fetch_page **inside the crawler module**
     monkeypatch.setattr(crawler, "fetch_page", _mock_page)
     return _mock_page
 
@@ -17,7 +16,7 @@ def mock_fetch(monkeypatch):
 def test_crawler_iterates(mock_fetch):
     crawler_instance = Crawler(
         url="https://example.com",
-        scheduler=Scheduler(mode="once"),  # ensure should_crawl always True
+        scheduler=Scheduler(mode="once"),
         scope=Scope.Unrestricted()
     )
 
