@@ -13,7 +13,7 @@ def mock_fetch(monkeypatch):
     return _mock_page
 
 
-def test_crawler_iterates(mock_fetch):
+def test_crawler_iterates():
     crawler_instance = Crawler(
         url="https://example.com",
         scheduler=Scheduler(mode="once"),
