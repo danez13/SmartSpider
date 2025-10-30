@@ -16,7 +16,6 @@ from .core import (
     CrawlQueue,
     Scheduler,
     Scope,
-    CrawlerScraper,
     ChangeDetector,
 )
 

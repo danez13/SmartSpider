@@ -14,11 +14,10 @@ Modules:
 - models: Shared data models (Url, Page, CrawlTask, etc.)
 """
 
-from .models import Url, Page, CrawlTask
+from ...models import Url, Page, CrawlTask
 from .queue import CrawlQueue
 from .scheduler import Scheduler
 from . import scope as Scope
-from .scraper import CrawlerScraper
 from .fetcher import fetch_page
 from .change_detector import ChangeDetector
 
@@ -29,7 +28,6 @@ __all__ = [
     "CrawlQueue",
     "Scheduler",
     "Scope",
-    "CrawlerScraper",
     "fetch_page",
     "ChangeDetector",
 ]

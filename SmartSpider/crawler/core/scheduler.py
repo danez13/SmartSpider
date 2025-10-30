@@ -1,7 +1,7 @@
 from typing import Optional
 import time
 
-from .models import Page, Url
+from ...models import Page, Url
 from .change_detector import ChangeDetector
 
 class Scheduler:

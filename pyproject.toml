@@ -15,7 +15,9 @@ requires-python = ">=3.7"
 dependencies = [
     "requests",
     "beautifulsoup4",
-    "pytest"
+    "pytest",
+    "openai",
+    "anthropic"
 ]
 
 classifiers = [
@@ -27,3 +29,6 @@ license-files = ["LICEN[CS]E*"]
 [project.urls]
 Homepage = "https://github.com/danez13/SmartSpider"
 Issues = "https://github.com/danez13/SmartSpider/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["SmartSpider"]

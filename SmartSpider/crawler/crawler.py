@@ -1,11 +1,12 @@
 import time
 
-from .core import Url, fetch_page, Scope, CrawlerScraper, CrawlQueue,Scheduler
+from .core import Url, fetch_page, Scope, CrawlQueue,Scheduler, Page
+from ..scraper import Scraper, href_scrape_fn
 
 class Crawler:
     def __init__(self, url: str,
                  queue: CrawlQueue = CrawlQueue(), scope: Scope = Scope.Unrestricted(),
-                 scraper: CrawlerScraper = CrawlerScraper(), scheduler: Scheduler = Scheduler()):
+                 scraper: Scraper = Scraper(scrape_fn=href_scrape_fn), scheduler: Scheduler = Scheduler()):
         
         self.init_url = Url(url)
         self.queue = queue
@@ -18,7 +19,7 @@ class Crawler:
     def __iter__(self):
         return self
     
-    def __next__(self):
+    def __next__(self) -> Page:
         while (item := self.queue.next_link()) is not None:
             url, depth = item
 
@@ -32,22 +33,12 @@ class Crawler:
             if self.scheduler.should_crawl(url):
                 self.queue.add_url(url,depth)
                 continue
-            # if item is None:
-            #     if self.scheduler.mode == "continuous":
-            #         time.sleep(1)
-            #         continue
-            #     else:
-            #         break
-
-            # if not self.scheduler.should_crawl(url):
-            #     self.queue.add_url(url,depth)
-            #     continue
             
             page = fetch_page(url)
             if page is None: continue
 
             if self.scheduler.process(page):
-                self.scraper = self.scraper.step(page)
+                self.scraper.step(page)
                 new_links = [link for link in self.scraper() if self.scope(link)]
             else:
                 continue
@@ -57,7 +48,7 @@ class Crawler:
             if self.scheduler.mode in ("incremental", "continuous"):
                 self.queue.add_url(url, depth)
 
-            return page.url, page.html
+            return page
         if self.queue.next_link() is None:
             raise StopIteration
 

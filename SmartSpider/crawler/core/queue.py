@@ -2,7 +2,7 @@ from typing import Callable, Optional
 from dataclasses import dataclass, field
 import heapq
 
-from .models import *
+from ...models import *
 
 @dataclass
 class CrawlQueue:

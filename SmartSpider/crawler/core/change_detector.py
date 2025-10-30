@@ -1,7 +1,7 @@
 from dataclasses import dataclass,field
 import hashlib
 
-from .models import Page
+from ...models import Page
 
 @dataclass
 class ChangeDetector:

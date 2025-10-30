@@ -1,4 +1,4 @@
-from .models import *
+from ...models import *
 
 class Scope:
     def __call__(self, url: Url) -> bool:

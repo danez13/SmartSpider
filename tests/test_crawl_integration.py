@@ -13,7 +13,7 @@ def mock_fetch(monkeypatch):
     return _mock_page
 
 
-def test_crawler_iterates():
+def test_crawler_iterates(mock_fetch):  # 👈 add mock_fetch here
     crawler_instance = Crawler(
         url="https://example.com",
         scheduler=Scheduler(mode="once"),
@@ -23,3 +23,4 @@ def test_crawler_iterates():
     url, html = next(crawler_instance)
     assert url == "https://example.com"
     assert "<a href='https://example.com/next'>Next</a>" in html
+
