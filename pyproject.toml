@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "SmartSpider"
-version = "0.0.1"
+version = "0.0.3"
 description = "A modular adaptive web crawler framework with incremental, continuous, and scope-limited crawling support."
 authors = [
   { name="Daniel", email="hernandezdaniel1702@gmail.com" },
