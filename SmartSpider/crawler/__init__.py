@@ -17,6 +17,7 @@ from .core import (
     Scheduler,
     Scope,
     ChangeDetector,
+    fetch_page
 )
 
 __all__ = [
@@ -26,4 +27,5 @@ __all__ = [
     "Scope",
     "CrawlerScraper",
     "ChangeDetector",
+    "fetch_page",
 ]

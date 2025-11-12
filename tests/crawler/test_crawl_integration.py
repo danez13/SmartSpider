@@ -1,7 +1,7 @@
 import pytest
-from SmartSpider.core import Page, Scope, Scheduler
-from SmartSpider import crawler
-from SmartSpider.crawler import Crawler
+from SmartSpider import Page
+from SmartSpider import Scheduler, Scope, Crawler
+from SmartSpider import Crawler
 
 @pytest.fixture
 def mock_fetch(monkeypatch):
@@ -9,7 +9,7 @@ def mock_fetch(monkeypatch):
         html = f"<a href='{url}/next'>Next</a>" 
         return Page(url, html)
 
-    monkeypatch.setattr(crawler, "fetch_page", _mock_page)
+    monkeypatch.setattr(Crawler, "fetch_page", _mock_page)
     return _mock_page
 
 

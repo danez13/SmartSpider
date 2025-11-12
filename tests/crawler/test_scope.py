@@ -1,4 +1,5 @@
-from SmartSpider.core import Url, Scope
+from SmartSpider import Url
+from SmartSpider import Scope
 
 def test_sitewide_scope():
     scope = Scope.SiteWide("https://example.com")

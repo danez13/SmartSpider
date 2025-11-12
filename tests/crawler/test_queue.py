@@ -1,5 +1,6 @@
 import pytest
-from SmartSpider.core import CrawlQueue, Url
+from SmartSpider import CrawlQueue
+from SmartSpider import Url
 
 def test_add_and_next_link():
     q = CrawlQueue()

@@ -1,4 +1,4 @@
-from SmartSpider.core import Scheduler
+from SmartSpider import Scheduler
 
 def test_once_mode_always_true(sample_page):
     s = Scheduler(mode="once")
